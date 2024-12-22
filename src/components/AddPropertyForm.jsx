@@ -1,17 +1,33 @@
 import { useState } from "react";
+import { getDataFromLocalStorage, setDataToLocalStorage } from "../utils/localStorage";
 import Modal from "./Modal";
 
-export default function AddPropertyForm({onAddProperty, isOpen = false, onClose}) {
+export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose }) {
   const [name, setName] = useState('');
-  const [type, setType] = useState('Apartment');
-  const [status, setStatus] = useState('Available');
+  const [type, setType] = useState('');
+  const [status, setStatus] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
+  // Function to add property to localStorage
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddProperty({ name, type, status });
-    setName('');
-    setType('Apartment');
-    setStatus('Available');
+
+    setIsLoading(true);
+
+    setTimeout(() => {
+      const newProperty = { id: crypto.randomUUID(), name, type, status };
+      const currentProperties = getDataFromLocalStorage("properties");
+
+      // Add new property to localStorage
+      currentProperties.push(newProperty);
+      setDataToLocalStorage("properties", currentProperties);
+      // Reset the form
+      setName('');
+      setType('');
+      setStatus('');
+      setIsLoading(false);
+      onClose();
+    }, 1500);
   };
 
   return (
@@ -34,6 +50,7 @@ export default function AddPropertyForm({onAddProperty, isOpen = false, onClose}
             onChange={(e) => setType(e.target.value)}
             className="w-full p-2 border rounded"
           >
+            <option default>Select Type</option>
             <option>Apartment</option>
             <option>House</option>
             <option>Commercial</option>
@@ -46,11 +63,14 @@ export default function AddPropertyForm({onAddProperty, isOpen = false, onClose}
             onChange={(e) => setStatus(e.target.value)}
             className="w-full p-2 border rounded"
           >
+            <option default>Select Type</option>
             <option>Available</option>
             <option>Rented</option>
           </select>
         </div>
-        <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded">
+        <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded flex items-center gap-3">
+          {isLoading && <div class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full " role="status" aria-label="loading">
+          </div>}
           Add Property
         </button>
       </form>
