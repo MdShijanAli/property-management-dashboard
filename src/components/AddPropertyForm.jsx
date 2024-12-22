@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { getDataFromLocalStorage, setDataToLocalStorage } from "../utils/localStorage";
+import { createProperty } from './../features/propertySlice';
 import Modal from "./Modal";
 
 export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose }) {
@@ -7,6 +9,7 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
   const [type, setType] = useState('');
   const [status, setStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   // Function to add property to localStorage
   const handleSubmit = (e) => {
@@ -20,6 +23,7 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
 
       // Add new property to localStorage
       currentProperties.push(newProperty);
+      dispatch(createProperty(newProperty));
       setDataToLocalStorage("properties", currentProperties);
       // Reset the form
       setName('');
