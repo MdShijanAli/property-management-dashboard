@@ -1,7 +1,11 @@
 import { useState } from "react";
+import AddPropertyForm from './AddPropertyForm';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -15,7 +19,11 @@ export default function Navbar() {
         <ul className="hidden md:flex space-x-4">
           <li><a href="#" className="text-gray-700 hover:text-green-600">Dashboard</a></li>
           <li><a href="#" className="text-gray-700 hover:text-green-600">Properties</a></li>
-          <li><a href="#" className="text-gray-700 hover:text-green-600">Add Property</a></li>
+          <li>
+            <button onClick={toggleModal} className="text-gray-700 hover:text-green-600">
+              Add Property
+            </button>
+          </li>
         </ul>
         {/* Mobile Menu Button */}
         <button
@@ -54,12 +62,17 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#" className="block text-gray-700 hover:text-green-600 p-4">
+            <button
+              onClick={toggleModal}
+              className="block text-gray-700 hover:text-green-600 p-4">
               Add Property
-            </a>
+            </button>
           </li>
         </ul>
       )}
+
+      {/* Modal */}
+      <AddPropertyForm isOpen={isModalOpen} onClose={toggleModal} />
     </nav>
   );
 }
