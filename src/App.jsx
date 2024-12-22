@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import AddPropertyForm from './components/AddPropertyForm';
+import KeyNumbers from './components/KeyNumbers';
+import PropertyList from './components/PropertyList';
+import Layout from './layout/Layout';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [properties, setProperties] = useState([
+    { id: 1, name: 'Apartment A', type: 'Apartment', status: 'Available' },
+    { id: 2, name: 'House B', type: 'House', status: 'Rented' },
+  ]);
+
+  const handleAddProperty = (property) => {
+    setProperties([...properties, { id: Date.now(), ...property }]);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Layout>
+      <KeyNumbers checkIns={12} checkOuts={8} />
+      <h2 className="text-2xl font-bold mt-6">Properties</h2>
+      <PropertyList properties={properties} />
+      <h2 className="text-2xl font-bold mt-6">Add New Property</h2>
+      <AddPropertyForm onAddProperty={handleAddProperty} />
+    </Layout>
+  );
+};
 
-export default App
+export default App;
