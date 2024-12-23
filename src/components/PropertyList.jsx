@@ -4,12 +4,14 @@ import { setProperties } from "../features/propertySlice";
 import { DeleteIcon } from "../icons/DeleteIcon";
 import { EditIcon } from "../icons/EditIcon";
 import { getDataFromLocalStorage } from "../utils/localStorage";
+import AddPropertyForm from "./AddPropertyForm";
 import DeleteConFirmationModal from "./DeleteConfirmationModal";
 
 export default function PropertyList() {
   const dispatch = useDispatch();
   const { properties, filters } = useSelector((state) => state.properties);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState(null);
 
   useEffect(() => {
@@ -26,6 +28,10 @@ export default function PropertyList() {
   const handleDeleteProperty = (property) => {
     setSelectedProperty(property)
     setIsModalOpen(true);
+  };
+  const handleEditProperty = (property) => {
+    setSelectedProperty(property)
+    setIsEditModalOpen(true);
   };
 
   return (
@@ -54,7 +60,7 @@ export default function PropertyList() {
                   </p>
                 </div>
                 <div className="group-hover:grid gap-3 hidden">
-                  <button className="border group/btn border-green-600 transition duration-200 ease-in-out hover:bg-green-600 text-white p-2 rounded-full flex items-center gap-2">
+                  <button onClick={()=> handleEditProperty(property)} className="border group/btn border-green-600 transition duration-200 ease-in-out hover:bg-green-600 text-white p-2 rounded-full flex items-center gap-2">
                     <EditIcon className="text-green-600 group-hover/btn:text-white transition duration-200 ease-in-out text-xl" />
                   </button>
                   <button onClick={()=> handleDeleteProperty(property)} className="border group/btn border-red-600 transition duration-200 ease-in-out hover:bg-red-600 text-white p-2 rounded-full">
@@ -70,6 +76,7 @@ export default function PropertyList() {
       }
 
       <DeleteConFirmationModal properties={filteredProperties} selectedProperty={selectedProperty} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <AddPropertyForm mode="edit" properties={filteredProperties} selectedProperty={selectedProperty} isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)} />
     </div>
   );
 }

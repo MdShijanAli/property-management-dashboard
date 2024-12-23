@@ -25,8 +25,8 @@ export default function DeleteConFirmationModal({ isOpen, onClose, properties = 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isLoading={isLoading} onAction={handleDeleteProperty} title="Delete Property ??" btnCaption="Confirm" >
       <div className="flex items-center gap-3">
-        <h2>Are You Sure Want to Delete This Property?</h2>
-        <span><DeleteIcon className="text-2xl text-red-600" /></span>
+        <h2 className="dark:text-white">Are You Sure Want to Delete This Property?</h2>
+        <span><DeleteIcon className="text-2xl text-red-600 dark:text-white" /></span>
       </div>
     </Modal>
   );

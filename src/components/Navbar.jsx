@@ -109,7 +109,7 @@ export default function Navbar() {
       )}
 
       {/* Modal */}
-      <AddPropertyForm isOpen={isModalOpen} onClose={toggleModal} />
+      <AddPropertyForm mode="add" isOpen={isModalOpen} onClose={toggleModal} />
     </nav>
   );
 }

@@ -2,11 +2,11 @@ export default function Modal({ isOpen = false, onClose, children, isLoading = f
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 shadow-xl box-shadow">
       <div className="bg-white dark:bg-[#0B1120] rounded shadow-lg w-full max-w-md transform transition-transform scale-100">
         <form onSubmit={onAction}>
           <h2 className="text-2xl font-semibold p-5 border-b dark:text-white">{title}</h2>
-          <div className="p-5">
+          <div className="px-5 py-8">
             {children}
           </div>
 
