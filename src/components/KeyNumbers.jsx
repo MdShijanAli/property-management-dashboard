@@ -5,7 +5,7 @@ import { ReviewIcon } from "../icons/ReviewIcon";
 
 export default function KeyNumbers() {
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4">
       <div className="border border-gray-200 p-4 rounded-xl shadow-md flex justify-between items-center">
         <div>
           <h2 className="text-xl font-normal leading-loose">Check-ins</h2>

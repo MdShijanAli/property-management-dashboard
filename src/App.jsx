@@ -21,12 +21,12 @@ const App = () => {
           </div>
         </div>
         <KeyNumbers />
-        <div className='flex justify-between items-center'>
-        <h2 className="text-2xl font-bold py-6">Properties</h2>
-        <div className='flex items-center gap-3'>
-          <p>Filter By</p>
-          <Filter />
-        </div>
+        <div className='sm:flex grid sm:justify-between sm:items-center gap-3 py-6'>
+          <h2 className="text-2xl font-bold">Properties</h2>
+          <div className='flex items-center gap-3'>
+            <p>Filter By</p>
+            <Filter />
+          </div>
         </div>
         <PropertyList />
       </div>
