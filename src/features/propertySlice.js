@@ -3,6 +3,10 @@ import { getDataFromLocalStorage, setDataToLocalStorage } from "../utils/localSt
 
 const initialState = {
   properties: getDataFromLocalStorage("properties") || [],
+  filters: {
+    type: "",
+    status: "",
+  },
 };
 
 const propertySlice = createSlice({
@@ -16,13 +20,14 @@ const propertySlice = createSlice({
     setProperties: (state, action) => {
       state.properties = action.payload;
     },
+    setFilter: (state, action) => {
+      state.filters = {
+        ...state.filters,
+        ...action.payload,
+      };
+    },
   },
 });
 
-export const createProperty = (property) => async (dispatch) => {
-  dispatch(addProperty(property));
-};
-
-// Export actions and reducer
-export const { addProperty, setProperties } = propertySlice.actions;
+export const { addProperty, setProperties, setFilter } = propertySlice.actions;
 export default propertySlice.reducer;

@@ -1,6 +1,7 @@
 // File: src/App.js
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
+import Filter from './components/Filter';
 import KeyNumbers from './components/KeyNumbers';
 import PropertyList from './components/PropertyList';
 import Layout from './layout/Layout';
@@ -20,7 +21,13 @@ const App = () => {
           </div>
         </div>
         <KeyNumbers />
+        <div className='flex justify-between items-center'>
         <h2 className="text-2xl font-bold py-6">Properties</h2>
+        <div className='flex items-center gap-3'>
+          <p>Filter By</p>
+          <Filter />
+        </div>
+        </div>
         <PropertyList />
       </div>
 

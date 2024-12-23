@@ -2,7 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { getDataFromLocalStorage, setDataToLocalStorage } from "../utils/localStorage";
-import { createProperty } from './../features/propertySlice';
+import { addProperty } from './../features/propertySlice';
 import Modal from "./Modal";
 
 export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose }) {
@@ -12,7 +12,6 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
-  // Function to add property to localStorage
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -31,9 +30,8 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
       const newProperty = { id: crypto.randomUUID(), name, type, status, date: new Date().toLocaleDateString() };
       const currentProperties = getDataFromLocalStorage("properties");
 
-      // Add new property to localStorage
       currentProperties.push(newProperty);
-      dispatch(createProperty(newProperty));
+      dispatch(addProperty(newProperty));
       setDataToLocalStorage("properties", currentProperties);
       toast.success('Property added successfully');
       // Reset the form
@@ -81,7 +79,7 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
             className="w-full p-2 border rounded"
             required
           >
-            <option default>Select Type</option>
+            <option default>Select Status</option>
             <option>Available</option>
             <option>Rented</option>
           </select>
