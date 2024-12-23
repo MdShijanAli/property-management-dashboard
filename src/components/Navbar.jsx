@@ -13,7 +13,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white shadow p-4 relative">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <h1 className="text-xl font-bold">Property Management</h1>
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-4">
