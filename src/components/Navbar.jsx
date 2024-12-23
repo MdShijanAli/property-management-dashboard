@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { DarkMoodIcon } from "../icons/DarkMoodIcon";
 import { LightMoodIcon } from "../icons/LightMoodIcon";
-import { getDataFromLocalStorage, setDataToLocalStorage } from "../utils/localStorage";
+import { setDataToLocalStorage } from "../utils/localStorage";
 import AddPropertyForm from './AddPropertyForm';
 
 export default function Navbar() {
@@ -9,11 +9,9 @@ export default function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [theme, setTheme] = useState('light');
 
-  // Load theme from localStorage on component mount
   useEffect(() => {
-    const savedTheme = getDataFromLocalStorage("theme") || "light";
+    const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
-    // Apply the theme to <html>
     document.documentElement.classList.toggle("dark", savedTheme === "dark");
   }, []);
 
@@ -45,10 +43,10 @@ export default function Navbar() {
           </li>
           <li onClick={handleSwitchTheme} className="cursor-pointer">
             {
-              theme === 'light' ? (
-                <DarkMoodIcon className="dark:text-white" />
-              ) : (
+              theme === 'dark' ? (
                 <LightMoodIcon className="dark:text-white" />
+              ) : (
+                <DarkMoodIcon className="dark:text-white" />
               )
             }
           </li>
