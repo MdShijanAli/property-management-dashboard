@@ -24,7 +24,7 @@ export default function PropertyList() {
         filteredProperties.length > 0 ?
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredProperties.map((property) => (
-              <div key={property.id} className="bg-white p-10 rounded-xl shadow-md">
+              <div key={property.id} className="bg-white dark:bg-[#0B1120] dark:border dark:border-gray-800 dark:text-white p-10 rounded-xl shadow-md">
                 <p className="mb-3">
                   Date: <span className="font-semibold">{property.date || "N/A"}</span>
                 </p>

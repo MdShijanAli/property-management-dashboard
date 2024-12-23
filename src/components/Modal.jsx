@@ -3,9 +3,9 @@ export default function Modal({ isOpen = false, onClose, children, isLoading = f
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded shadow-lg w-full max-w-md transform transition-transform scale-100">
+      <div className="bg-white dark:bg-[#0B1120] rounded shadow-lg w-full max-w-md transform transition-transform scale-100">
         <form onSubmit={onSave}>
-          <h2 className="text-2xl font-bold p-5 border-b">Add Property</h2>
+          <h2 className="text-2xl font-bold p-5 border-b dark:text-white">Add Property</h2>
           <div className="p-5">
             {children}
           </div>

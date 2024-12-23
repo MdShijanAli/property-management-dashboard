@@ -6,8 +6,8 @@ import { ReviewIcon } from "../icons/ReviewIcon";
 export default function KeyNumbers() {
   return (
     <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4">
-      <div className="border border-gray-200 p-4 rounded-xl shadow-md flex justify-between items-center">
-        <div>
+      <div className="border border-gray-200 p-4 dark:bg-[#0B1120] dark:border-gray-800 rounded-xl shadow-md flex justify-between items-center">
+        <div className="dark:text-white">
           <h2 className="text-xl font-normal leading-loose">Check-ins</h2>
           <p className="text-2xl font-semibold">12</p>
         </div>
@@ -15,8 +15,8 @@ export default function KeyNumbers() {
           <CheckinIcon className="text-3xl text-[#22C55E]" />
         </div>
       </div>
-      <div className="border border-gray-200 p-4 rounded-xl shadow-md flex justify-between items-center">
-        <div>
+      <div className="border border-gray-200 p-4 dark:bg-[#0B1120] dark:border-gray-800 rounded-xl shadow-md flex justify-between items-center">
+        <div className="dark:text-white">
           <h2 className="text-xl font-normal leading-loose">Check-out</h2>
           <p className="text-2xl font-semibold">32</p>
         </div>
@@ -24,8 +24,8 @@ export default function KeyNumbers() {
           <CheckoutIcon className="text-3xl text-[#EF4444]" />
         </div>
       </div>
-      <div className="border border-gray-200 p-4 rounded-xl shadow-md flex justify-between items-center">
-        <div>
+      <div className="border border-gray-200 p-4 dark:bg-[#0B1120] dark:border-gray-800 rounded-xl shadow-md flex justify-between items-center">
+        <div className="dark:text-white">
           <h2 className="text-xl font-normal leading-loose">Earnings</h2>
           <p className="">
             <span className="text-sm font-semibold">$</span>
@@ -37,8 +37,8 @@ export default function KeyNumbers() {
           <MoneyIcon className="text-2xl text-[#22C55E]" />
         </div>
       </div>
-      <div className="border border-gray-200 p-4 rounded-xl shadow-md flex justify-between items-center">
-        <div>
+      <div className="border border-gray-200 p-4 dark:bg-[#0B1120] dark:border-gray-800 rounded-xl shadow-md flex justify-between items-center">
+        <div className="dark:text-white">
           <h2 className="text-xl font-normal leading-loose">Reviews</h2>
           <p className="text-2xl font-semibold">
             <span>4.5</span>

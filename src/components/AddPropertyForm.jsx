@@ -45,9 +45,9 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isLoading={isLoading} onSave={handleSubmit}>
-      <div className="bg-gray-100 p-4 rounded shadow">
+      <div className="bg-gray-100 dark:bg-[#0B1120] p-4 rounded shadow">
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Property Name</label>
+          <label className="block text-gray-700 mb-2 dark:text-white">Property Name</label>
           <input
             type="text"
             value={name}
@@ -58,7 +58,7 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Type</label>
+          <label className="block text-gray-700 mb-2 dark:text-white">Type</label>
           <select
             value={type}
             onChange={(e) => setType(e.target.value)}
@@ -72,7 +72,7 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
           </select>
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Status</label>
+          <label className="block text-gray-700 mb-2 dark:text-white">Status</label>
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
