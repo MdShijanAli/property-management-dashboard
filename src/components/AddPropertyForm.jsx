@@ -44,7 +44,7 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isLoading={isLoading} onSave={handleSubmit}>
+    <Modal isOpen={isOpen} onClose={onClose} isLoading={isLoading} onAction={handleSubmit} title="Add Property" btnCaption="Add Property">
       <div className="bg-gray-100 dark:bg-[#0B1120] p-4 rounded shadow">
         <div className="mb-4">
           <label className="block text-gray-700 mb-2 dark:text-white">Property Name</label>
