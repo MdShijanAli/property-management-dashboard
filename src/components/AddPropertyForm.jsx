@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { getDataFromLocalStorage, setDataToLocalStorage } from "../utils/localStorage";
 import { createProperty } from './../features/propertySlice';
@@ -15,6 +16,15 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!type) {
+      toast.error('Please select a type');
+      return
+    }
+    if (!status) {
+      toast.error('Please select a status');
+      return
+    }
+
     setIsLoading(true);
 
     setTimeout(() => {
@@ -25,6 +35,7 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
       currentProperties.push(newProperty);
       dispatch(createProperty(newProperty));
       setDataToLocalStorage("properties", currentProperties);
+      toast.success('Property added successfully');
       // Reset the form
       setName('');
       setType('');
@@ -53,6 +64,7 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
             value={type}
             onChange={(e) => setType(e.target.value)}
             className="w-full p-2 border rounded"
+            required
           >
             <option default>Select Type</option>
             <option>Apartment</option>
@@ -66,6 +78,7 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
             value={status}
             onChange={(e) => setStatus(e.target.value)}
             className="w-full p-2 border rounded"
+            required
           >
             <option default>Select Type</option>
             <option>Available</option>
