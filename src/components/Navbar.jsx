@@ -51,9 +51,9 @@ export default function Navbar() {
             }
           </li>
         </ul>
-        <div className="flex items-center gap-4">
+        <div className="flex md:hidden items-center gap-4">
           {/* Mobile Menu Button */}
-          <div onClick={handleSwitchTheme} className="cursor-pointer block md:hidden">
+          <div onClick={handleSwitchTheme} className="cursor-pointer">
             {
               theme === 'dark' ? (
                 <LightMoodIcon className="dark:text-white" />
@@ -63,7 +63,7 @@ export default function Navbar() {
             }
           </div>
           <button
-            className="block md:hidden text-gray-700 hover:text-green-600 focus:outline-none"
+            className="text-gray-700 hover:text-green-600 focus:outline-none"
             onClick={toggleMenu}
           >
             <svg
