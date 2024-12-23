@@ -28,7 +28,7 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
     setIsLoading(true);
 
     setTimeout(() => {
-      const newProperty = { id: crypto.randomUUID(), name, type, status };
+      const newProperty = { id: crypto.randomUUID(), name, type, status, date: new Date().toLocaleDateString() };
       const currentProperties = getDataFromLocalStorage("properties");
 
       // Add new property to localStorage
@@ -46,20 +46,21 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <form onSubmit={handleSubmit} className="bg-gray-100 p-4 rounded shadow">
+    <Modal isOpen={isOpen} onClose={onClose} isLoading={isLoading} onSave={handleSubmit}>
+      <div className="bg-gray-100 p-4 rounded shadow">
         <div className="mb-4">
-          <label className="block text-gray-700">Property Name</label>
+          <label className="block text-gray-700 mb-2">Property Name</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="w-full p-2 border rounded"
+            placeholder="Enter Property Name"
             required
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Type</label>
+          <label className="block text-gray-700 mb-2">Type</label>
           <select
             value={type}
             onChange={(e) => setType(e.target.value)}
@@ -73,7 +74,7 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
           </select>
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Status</label>
+          <label className="block text-gray-700 mb-2">Status</label>
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
@@ -85,12 +86,8 @@ export default function AddPropertyForm({ onAddProperty, isOpen = false, onClose
             <option>Rented</option>
           </select>
         </div>
-        <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded flex items-center gap-3">
-          {isLoading && <div class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full " role="status" aria-label="loading">
-          </div>}
-          Add Property
-        </button>
-      </form>
+
+      </div>
     </Modal>
   );
 }
